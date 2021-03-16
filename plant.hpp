@@ -2,6 +2,7 @@
 #include <string_view>
 #include <stdexcept>      // std::invalid_argument
 #include <array>
+#include <string>
 
 class Plant {
 
@@ -21,7 +22,7 @@ class Plant {
         void addNeighbour(const Plant & neighbour);
 
         const std::array<Gene, 6> & getGenes() const;
-
+        void printGenes() const;
 };
 
 

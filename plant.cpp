@@ -114,30 +114,54 @@ const std::array<Plant::Gene, 6> & Plant::getGenes() const {
     return genes;
 }
 
+void Plant::printGenes() const {
 
+    for (auto i : getGenes()) {
 
-int main() {
-
-    Plant a("WWXXHY");
-    
-    Plant b("XXXGGG");
-    Plant c("WWGGGW");
-    Plant d("YGGWWX");
-    Plant e("YGGWXX");
-
-
-    auto genes = a.getGenes();
-
-    for (int i=0; i<6;i++) {
-        std::cout << genes[i] << ", ";
+        switch(i) {
+            case Plant::Y:
+            std::cout << "Y ";
+            break;
+            case Plant::G:
+            std::cout << "G ";
+            break;
+            case Plant::H:
+            std::cout << "H ";
+            break;
+            case Plant::W:
+            std::cout << "W ";
+            break;
+            case Plant::X:
+            std::cout << "X ";
+            break;
+        }
     }
-    std::cout << "\n";
-
-
-    a.addNeighbour(b);
-    a.addNeighbour(c);
-    a.addNeighbour(d);
-    a.addNeighbour(e);
-    a.crossbread();
-
+    std::cout << '\n';
 }
+
+
+// int main() {
+
+//     Plant a("WWXXHY");
+    
+//     Plant b("XXXGGG");
+//     Plant c("WWGGGW");
+//     Plant d("YGGWWX");
+//     Plant e("YGGWXX");
+
+
+//     auto genes = a.getGenes();
+
+//     for (int i=0; i<6;i++) {
+//         std::cout << genes[i] << ", ";
+//     }
+//     std::cout << "\n";
+
+
+//     a.addNeighbour(b);
+//     a.addNeighbour(c);
+//     a.addNeighbour(d);
+//     a.addNeighbour(e);
+//     a.crossbread();
+
+// }
