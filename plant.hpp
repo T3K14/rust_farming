@@ -4,17 +4,26 @@
 #include <array>
 #include <string>
 
+// U for no change
+enum Gene {X, W, Y, G, H, YG, YH, GH, U=99};
+
+
 class Plant {
+
 
     private:
         // U for no change
-        enum Gene {X, W, Y, G, H, YG, YH, GH, U=99};
+        // enum Gene {X, W, Y, G, H, YG, YH, GH, U=99};
         std::array<Gene, 6> genes;
         std::vector<Plant> neighbours;
 
 
 
     public:
+
+        // enum Gene {X, W, Y, G, H, YG, YH, GH, U=99};
+
+
         Plant();
         Plant(std::string_view str);
 
@@ -26,6 +35,6 @@ class Plant {
 };
 
 
-struct Gene {
-    float value;
-};
+// struct Gene {
+//     float value;
+// };

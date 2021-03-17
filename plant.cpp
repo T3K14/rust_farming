@@ -13,7 +13,7 @@ Plant::Plant(std::string_view str){
 
     //Markus fragen
     for (int i=0;i<6;i++) {
-        Plant::Gene g;
+        Gene g;
 
         switch (str[i]) {
             case 'X':
@@ -41,11 +41,10 @@ Plant::Plant(std::string_view str){
 }
 
 void Plant::crossbread() {
+    std::array<float, 5> priorities {1.0f, 1.0f, .6f, .6f, .6f};
 
     // for every geneslot
     for (int i=0; i<6; i++) {
-
-        std::array<float, 5> priorities {1.0f, 1.0f, .6f, .6f, .6f};
 
         std::array<unsigned int, 5> counter {};
 
@@ -80,6 +79,13 @@ void Plant::crossbread() {
                 newGene = static_cast<Gene>(j);
                 std::cout << "newgene " << newGene << '\n';
             } else if(val > 0.6f && val == maxVal) {
+
+                // ANNAHME TESTEN: Dass wenn zB fuer einen Genslot 8 Nachbarn mit den Genen YYYYYXXX vorhanden sind, dass es dann auch 50/50 ist (3 * 1 = 0.6 * 5)
+                // das kann nur bei 8 Nachbarn passieren
+                if (neighbours.size() == 8 && ){
+
+                }
+
                 newGene = static_cast<Gene>(newGene + j);       //if there are Genes with the same value, both are equally possible
                 // newGene = ( newGene == Gene::U ?  :static_cast<Gene>(newGene + j));       //if there are Genes with the same value, both are equally possible
 
@@ -104,13 +110,19 @@ void Plant::crossbread() {
 }
 
 void Plant::addNeighbour(const Plant & neighbour){
+
+    if (neighbours.size() == 8) {
+        std::cout << "There cannot be more than 8 neighbours! The passed plant is not added to the neighbourlist!\n";
+        return;
+    }
+
     std::cout << "neighbour added\n";
     neighbours.push_back(neighbour);
 }
 
 
 
-const std::array<Plant::Gene, 6> & Plant::getGenes() const {
+const std::array<Gene, 6> & Plant::getGenes() const {
     return genes;
 }
 
@@ -119,21 +131,23 @@ void Plant::printGenes() const {
     for (auto i : getGenes()) {
 
         switch(i) {
-            case Plant::Y:
+            case Y:
             std::cout << "Y ";
             break;
-            case Plant::G:
+            case G:
             std::cout << "G ";
             break;
-            case Plant::H:
+            case H:
             std::cout << "H ";
             break;
-            case Plant::W:
+            case W:
             std::cout << "W ";
             break;
-            case Plant::X:
+            case X:
             std::cout << "X ";
             break;
+            default:
+            std::cout << (int) i;
         }
     }
     std::cout << '\n';
