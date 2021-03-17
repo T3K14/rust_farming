@@ -13,10 +13,12 @@ add_subdirectory(googletest)
 
 set(Headers
     plant.hpp
+    Gene.hpp
 )
 
 set(Sources
     plant.cpp
+    Gene.cpp
 )
 
 add_library(${This} STATIC ${Sources} ${Headers})
