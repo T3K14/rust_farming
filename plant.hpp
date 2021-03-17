@@ -5,7 +5,17 @@
 #include <string>
 
 // U for no change
-enum Gene {X, W, Y, G, H, YG, YH, GH, U=99};
+// enum Gene {X, W, Y, G, H, YG, YH, GH, U=99};
+
+class Gene {
+
+    std::string genetype;
+
+    public:
+        Gene(char name);
+        virtual ~Gene() = default;
+
+};
 
 
 class Plant {
