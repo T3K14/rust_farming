@@ -25,7 +25,7 @@ Plant::Plant(std::string_view str){
 
 void Plant::crossbread() {
 
-    std::array<float, 5> priorities {0.6f, .6f, 1.0f, 1.0f, 1.0f};
+    std::array<float, 5> priorities {0.6f, .6f, 0.6f, 1.0f, 1.0f};
     std::array<char, 5> geneNames {'Y', 'G', 'H', 'W', 'X'};
 
     // for every geneslot
@@ -131,34 +131,19 @@ const std::array<Gene, 6> & Plant::getGenes() const {
     return genes;
 }
 
-/*
 void Plant::printGenes() const {
 
     for (auto i : getGenes()) {
 
-        switch(i) {
-            case Y:
-            std::cout << "Y ";
-            break;
-            case G:
-            std::cout << "G ";
-            break;
-            case H:
-            std::cout << "H ";
-            break;
-            case W:
-            std::cout << "W ";
-            break;
-            case X:
-            std::cout << "X ";
-            break;
-            default:
-            std::cout << (int) i;
-        }
+        // if (i.isAmbiguouse()) {
+        //     std::cout << i.getGeneTypeChar() << "; ";
+        // } else {
+        std::cout << i.getGeneType() << ", ";
+        // }
+
     }
     std::cout << '\n';
 }
-*/
 
 // int main() {
 
